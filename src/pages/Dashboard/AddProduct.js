@@ -4,19 +4,19 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const AddProduct = () => {
     const nameRef = useRef('');
-    const imageRef = useRef('');
-    const descriptionRef = useRef('');
-    const availableQuantityRef = useRef('');
-    const minimumOrderQuantityRef = useRef('');
+    const pictureRef = useRef('');
+    const aboutRef = useRef('');
+    const totalRef = useRef('');
+    const minimumRef = useRef('');
     const priceRef = useRef('');
 
     const handleAddProduct = event => {
         event.preventDefault();
         const productName = nameRef.current.value;
-        const productImage = imageRef.current.value;
-        const description = descriptionRef.current.value;
-        const productAvailableQuantity = availableQuantityRef.current.value;
-        const minimumOrderQuantity = minimumOrderQuantityRef.current.value;
+        const productImage = pictureRef.current.value;
+        const description = aboutRef.current.value;
+        const productAvailableQuantity = totalRef.current.value;
+        const minimumOrderQuantity = minimumRef.current.value;
         const productPrice = priceRef.current.value;
         const addProduct = {
             name: productName,
@@ -49,10 +49,10 @@ const AddProduct = () => {
                 {/* form  */}
                 <form className='flex flex-col items-center' onSubmit={handleAddProduct}>
                     <input ref={nameRef} type="text" placeholder="Name" className="input w-full max-w-lg mt-3 " required />
-                    <input ref={imageRef} type="text" placeholder="Image URL" className="input w-full max-w-lg mb-3 mt-3 " required />
-                    <textarea ref={descriptionRef} type="text" placeholder="Short Description" className="input w-full max-w-lg mb-3" required />
-                    <input ref={availableQuantityRef} type="number" placeholder="Available Quantity" className="input w-full max-w-lg mb-3 " required />
-                    <input ref={minimumOrderQuantityRef} type="number" placeholder="Minimum Order Quantity" className="input w-full max-w-lg mb-3 " required />
+                    <input ref={pictureRef} type="text" placeholder="Image URL" className="input w-full max-w-lg mb-3 mt-3 " required />
+                    <textarea ref={aboutRef} placeholdertype="text" placeholder="Short Description" className="input w-full max-w-lg mb-3" required />
+                    <input ref={totalRef} type="number" placeholder="Available Quantity" className="input w-full max-w-lg mb-3 " required />
+                    <input ref={minimumRef} type="number" placeholder="Minimum Order Quantity" className="input w-full max-w-lg mb-3 " required />
                     <input ref={priceRef} type="number" placeholder="Price (per unit)" className="input w-full max-w-lg mb-3 " required />
                     <input className='btn btn-outline w-2/4' type="submit" value="Add Product" />
                 </form>

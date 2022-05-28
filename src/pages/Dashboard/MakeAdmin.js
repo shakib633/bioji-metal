@@ -4,21 +4,19 @@ import Loading from '../Loading/Loading';
 import Users from './Users';
 
 const MakeAdmin = () => {
-    const { data, isLoading, refetch } = useQuery('allusers', () => fetch(`http://localhost:5000/allusers`, {
+    const { data, isLoading, refetch } = useQuery('allusers', () => fetch('http://localhost:5000/allUsers', {
         method: 'GET',
         headers: {
-            authorization:`Bearer ${localStorage.getItem('accessToken')}`
+            authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
     }).then(res => res.json())
     );
-    console.log(data);
     if (isLoading) {
         return <Loading></Loading>
     }
 
     return (
         <section>
-            <h1>Make Admin Page{data.length}</h1>
             <div className="overflow-x-auto">
                 <table className="table table-zebra w-full">
                     <thead>

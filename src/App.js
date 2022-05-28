@@ -15,11 +15,11 @@ import MyOrders from './pages/Dashboard/MyOrders/MyOrders';
 import Myprofile from './pages/Dashboard/Myprofile';
 import AddAReview from './pages/Dashboard/AddReview';
 import RequireAdmin from './pages/Dashboard/RequireAdmin';
-import MakeAdmin from './pages/Dashboard/MakeAdmin';
 import AddProduct from './pages/Dashboard/AddProduct';
 import ManageAllOrders from './pages/Dashboard/ManageAllOrders';
 import ManageProducts from './pages/Dashboard/ManageProduts';
 import Update from './pages/Dashboard/Update';
+import MakeAdmin from './pages/Dashboard/MakeAdmin';
 
 
 function App() {

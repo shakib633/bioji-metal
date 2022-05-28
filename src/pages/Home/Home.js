@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import About from '../About';
 import Cart from '../Cart/Cart';
 import UseProducts from '../hooks/UseProducts';
 import OverView from '../OverView/OverView';
@@ -20,6 +21,7 @@ const Home = () => {
             <Link to='/ProductsCart'><button className='btn btn-outline'>See All</button></Link>
 
             <OverView></OverView>
+            <About></About>
         </div>
     );
 };
