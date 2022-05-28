@@ -27,12 +27,9 @@ const MyOrders = () => {
                 return res.json()
             })
 
-        .then(data=>{
-            setOrders(data)
-        
-        })
+        .then(data=> setOrders(data))
         }
-    },[user])
+    },[])
     return (
         <section>
         <h3>My Orders: {orders.length}</h3>

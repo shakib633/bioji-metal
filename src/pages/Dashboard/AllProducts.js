@@ -2,10 +2,10 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const AllProducts = ({ data }) => {
-    const { name, total, minimum, picture, price, _id } = data;
+    const { name, total,minimum, picture, price, _id } = data;
     const navigate = useNavigate();
     const navigateToUpdate = (id) => {
-        // navigate(/dashboard/ManageProducts/${id});
+        navigate(`/dashboard/manageProducts/${id}`)
     }
     console.log(data);
     return (
@@ -13,7 +13,7 @@ const AllProducts = ({ data }) => {
             <th></th>
             <td><div class="avatar">
                 <div class="w-24 rounded-full">
-                    <img src={picture} alt="" />
+                    <img src={picture} />
                 </div>
             </div></td>
             <td>{name}</td>
