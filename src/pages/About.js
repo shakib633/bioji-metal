@@ -15,7 +15,7 @@ wire and nitinol memory alloy, nickel and nickel alloys, titanium and titanium a
 other non-standard equipment.
 <p className="text-center mx-10"><img src="http://www.ly-metal.com/pic/other/2019-03-28-02-09-339.jpg"></img>
 </p>
-Our Products are exported to : Italy ,Sweden, Iran, Germany, Finland,norway , Israel, the United States, Canada,
+Our Products are exported to : Italy ,Sweden, Iran, Germany, Finland , Israel, the United States, Canada,
 South Korea, India, Malaysia and some other European countries.</p>
         </div>
     );
