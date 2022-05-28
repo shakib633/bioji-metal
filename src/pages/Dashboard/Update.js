@@ -6,31 +6,30 @@ const Update = () => {
     const { id } = useParams();
     const [part, setPart] = useState([]);
     useEffect(() => {
-        const url = `http://localhost:5000/orders/${id}`;
+        const url = `http://localhost:5000/products/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setPart(data))
     }, [part]);
 
     const nameRef = useRef('');
-    const descriptionRef = useRef('');
-    const availableQuantityRef = useRef('');
-    const minimumOrderQuantityRef = useRef('');
+    const aboutRef = useRef('');
+    const totalRef = useRef('');
+    const minimumRef = useRef('');
     const priceRef = useRef('');
 
     const handleUpdate = event => {
         event.preventDefault();
         const update = {
             name: nameRef.current.value,
-            short_description: descriptionRef.current.value,
-            minimum_order_quantity: minimumOrderQuantityRef.current.value,
-            available_quantity: availableQuantityRef.current.value,
+            about: aboutRef.current.value,
+            minimum: minimumRef.current.value,
+            total: totalRef.current.value,
             price: priceRef.current.value
         };
-        console.log(update);
 
 
-        fetch(`http://localhost:5000/orders/${id}`, {
+        fetch(`http://localhost:5000/products/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -50,9 +49,9 @@ const Update = () => {
                             <h2 className="card-title">
                                 <span className='font-bold'>Name:</span>{part.name}
                             </h2>
-                            <p><span className='font-bold'>Description:</span> {part.short_description}</p>
-                            <p><span className='font-bold'>Available Quantity:</span> {part.available_quantity}</p>
-                            <p><span className='font-bold'>Minimum Order Quantity:</span> {part.minimum_order_quantity}</p>
+                            <p><span className='font-bold'>Description:</span> {part.about}</p>
+                            <p><span className='font-bold'>Available Quantity:</span> {part.total}</p>
+                            <p><span className='font-bold'>Minimum Order Quantity:</span> {part.minimum}</p>
                             <p><span className='font-bold'>Price:</span> ${part.price} (per unit)</p>
                         </div>
                     </div>
@@ -63,9 +62,9 @@ const Update = () => {
                     <form onSubmit={handleUpdate} className='flex flex-col	justify-center items-center'>
                         <h2 className='text-5xl font-bold mb-5'>Update</h2>
                         <input ref={nameRef} type="text" value={part.name} className="input w-full max-w-lg mb-3 mt-3" required readOnly />
-                        <textarea ref={descriptionRef} type="text" value={part.short_description} className="input w-full max-w-lg mb-3" required readOnly />
-                        <input ref={availableQuantityRef} type="number" placeholder='Available Quantity' className="input w-full max-w-lg mb-3 mt-3" required />
-                        <input ref={minimumOrderQuantityRef} type="number" placeholder='Minimum Order Quantity' className="input w-full max-w-lg mb-3 mt-3" required />
+                        <textarea ref={aboutRef} type="text" value={part.about} className="input w-full max-w-lg mb-3" required readOnly />
+                        <input ref={totalRef} type="number" placeholder='Available Quantity' className="input w-full max-w-lg mb-3 mt-3" required />
+                        <input ref={minimumRef} type="number" placeholder='Minimum Order Quantity' className="input w-full max-w-lg mb-3 mt-3" required />
                         <input ref={priceRef} type="number" placeholder='Price' className="input w-full max-w-lg mb-3 mt-3" required />
                         <input className='btn btn-outline w-2/4' type="submit" value="Update" />
                     </form>

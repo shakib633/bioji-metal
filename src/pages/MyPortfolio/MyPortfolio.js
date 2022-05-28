@@ -18,8 +18,8 @@ const MyPortfolio = () => {
                    
                 
                     <a href="http://motohouse-a6b34.web.app/" target="blank" className="hover:text-warning font-bold hover:text-xl mr-5">project1</a>
-                    <a href="http://motohouse-a6b34.web.app/" target="blank" className="hover:text-warning font-bold hover:text-xl mr-5">project2</a>
-                    <a href="http://motohouse-a6b34.web.app/" target="blank" className="hover:text-warning hover:text-xl font-bold mr-5">project 3</a>
+                    <a href="https://memory-e097f.web.app/" target="blank" className="hover:text-warning font-bold hover:text-xl mr-5">project2</a>
+                    <a href="https://laptop-house.netlify.app/Dashboard" target="blank" className="hover:text-warning hover:text-xl font-bold mr-5">project 3</a>
                     
                 </div>
                 <h3 className="font-bold text-warning text-2xl mt-3 mb-3 p-2 shadow-2xl border-none">Skills :</h3>
@@ -45,6 +45,7 @@ const MyPortfolio = () => {
                     <p className='font-semibold mb-2 hover:text-warning '>Tailwind</p>
                     <p className='font-semibold mb-2 hover:text-warning '>React.js</p>
                     <p className='font-semibold mb-2 hover:text-warning '>Node.js</p>
+                    <p className='font-semibold mb-2 hover:text-warning '>Express.js</p>
                     <p className='font-semibold mb-2 hover:text-warning '>MongoDB</p>
                     <p className='font-semibold mb-2 hover:text-warning '>Firebase</p>
                     <p className='font-semibold mb-2 hover:text-warning '>GitHub</p>

@@ -6,7 +6,7 @@ const Footer = () => {
             <footer className="footer p-10 bg-base-300 text-base-content">
  
   <div>
-    <span class="footer-title">Company</span> 
+    <span className="footer-title">Company</span> 
     <a href="http://localhost:3000/ProductsCart" target="_blank" className="link link-hover">About us</a> 
     <a className="link link-hover">Contact</a> 
     <a className="link link-hover">Jobs</a> 

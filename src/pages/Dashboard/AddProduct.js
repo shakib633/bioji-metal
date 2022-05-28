@@ -21,9 +21,9 @@ const AddProduct = () => {
         const addProduct = {
             name: productName,
             picture: productImage,
-            short_description: description,
-            available_quantity: productAvailableQuantity,
-            minimum_order_quantity: minimumOrderQuantity,
+            about: description,
+            total: productAvailableQuantity,
+            minimum: minimumOrderQuantity,
             price: productPrice
         };
         console.log(addProduct);

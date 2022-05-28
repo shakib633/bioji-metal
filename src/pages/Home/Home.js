@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Cart from '../Cart/Cart';
-import Footer from '../Footer/Footer';
 import UseProducts from '../hooks/UseProducts';
 import OverView from '../OverView/OverView';
 import Banner from './../Banner/Banner';

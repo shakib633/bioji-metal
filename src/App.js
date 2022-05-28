@@ -47,7 +47,7 @@ function App() {
           </Route>
         <Route path='/Purchase/:id' element={<RequireAuth><Purchase></Purchase></RequireAuth>}></Route>
         <Route path='/dashboard/manageProducts/:id' element={<RequireAdmin><Update></Update></RequireAdmin>}></Route>
-      </Routes>
+            </Routes>
       <Footer></Footer>
 
     </div>

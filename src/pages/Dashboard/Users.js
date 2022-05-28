@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const Users = ({ userData, refetch }) => {
     const { email, role } = userData;
     const makeAdmin = () => {
-        fetch(`http://localhost:5000/users/admin/${email}`, {
+        fetch(`http://localhost:5000/user/admin/${email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
