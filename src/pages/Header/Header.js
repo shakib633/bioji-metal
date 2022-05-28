@@ -3,13 +3,12 @@ import { Link } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import { AiOutlineMenu } from 'react-icons/ai';
-import SignIn from './../SignIn/SignIn';
 
 const Header = () => {
     const [user] = useAuthState(auth);
     const handleSignOut = () => {
         signOut(auth);
+        localStorage.removeItem('accessToken');
     }
 
    
@@ -21,23 +20,26 @@ const Header = () => {
             user && <li><Link to='/dashboard'>Dashboard</Link></li>
         }
         
+        
         <p className='mt-3 mr-3 text-success'>{user?.displayName}</p>
 
             <div class="dropdown dropdown-end">
-            <label tabindex="0" className="btn btn-ghost btn-circle  avatar">
+            <label tabIndex="0" className="btn btn-ghost btn-circle  avatar">
               <div className=" ">
 
-        {user ? <img className="h-8 w-8 mx-auto rounded-full" src={user?.photoURL} alt="" />: <button className="my-3">SignIn</button> }
+
+        {user ? <img  className="h-8 w-8 mx-auto bg-light-100 rounded-full" src={user?.photoURL ||user.displayName} alt="" /> :
+         <button className="my-3">SignIn</button> }
                       
                  </div>
             </label>
             
-            <ul tabindex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
-              <li>
+            <ul tabIndex="0" class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
+              
               <li><Link to='/myportfolio' className='font-semibold'>My Portfolio</Link></li>
-              </li>
+             
               <li>{user ? <> 
-        <button className='btn btn-ghost' onClick={handleSignOut}> Sign out</button> </> : <Link to='/signin'><button className="btn btn-ghost">Sign In</button></Link>}</li>
+        <button className='btn btn-ghost ' onClick={handleSignOut}> Sign out</button> </> : <Link to='/signin'><button className="btn btn-ghost">Sign In</button></Link>}</li>
               </ul>
               </div>
               
@@ -65,9 +67,12 @@ const Header = () => {
                         {menuItems}
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <label htmlFor="sidebar" className="btn btn-ghost drawer-button lg:hidden"><AiOutlineMenu className='text-xl' /></label>
-                </div>
+               <div className="navbar-end"> 
+               <label tabIndex="1" for="dashboard-sidebar" className="btn btn-ghost lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                        </label>
+               </div>
+                
             </div>
         </div>
     );

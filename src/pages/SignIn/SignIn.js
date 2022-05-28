@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 
@@ -8,19 +8,25 @@ import { ImCross } from 'react-icons/im';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loading from '../Loading/Loading';
-import SocialLogin from './SocialLogin';
+import useToken from '../hooks/UseToken';
+import { FcGoogle } from 'react-icons/fc';
+
 
 
 const SignIn = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
     const navigate = useNavigate();
+
+    const[signInWithGoogle, googleUser, googleLoading, googleError]=useSignInWithGoogle(auth);
     const [
         signInWithEmailAndPassword,
         user,
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+
+     const [token]=useToken(user|| googleUser)
 
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(
         auth
@@ -48,16 +54,16 @@ const SignIn = () => {
 
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
-    if (user) {
+    if (token) {
         navigate(from, { replace: true });
     }
 
-    if (loading || sending) {
+    if (loading || sending || googleLoading) {
         return <Loading></Loading>
     }
 
     let loginError = '';
-    if (error) {
+    if (error || googleError) {
         loginError = <p className='text-red-500 text-center m-2 font-bold'><ImCross className='inline' /> Error: Incorrect email address or password</p>
     }
 
@@ -80,9 +86,12 @@ const SignIn = () => {
                 </div>
                 <ToastContainer />
             </div>
-            <div>
-                <SocialLogin></SocialLogin>
-            </div>
+            
+            <button
+                        onClick={() => signInWithGoogle()}
+                        className="btn btn-outline"
+                    ><FcGoogle className='inline  text-3xl' /> Continue With Google</button>
+        
         </section>
     );
 };

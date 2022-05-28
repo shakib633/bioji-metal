@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
-import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { Link, useNavigate } from 'react-router-dom';
 import { ImCross } from 'react-icons/im';
@@ -8,11 +8,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BsArrowRight } from 'react-icons/bs';
 import Loading from '../Loading/Loading';
-import SocialLogin from './SocialLogin';
+import useToken from '../hooks/UseToken';
+import { FcGoogle } from 'react-icons/fc';
+
 
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-
+const[signInWithGoogle, googleUser, googleLoading, googleError]=useSignInWithGoogle(auth);
     const [
         createUserWithEmailAndPassword,
         user,
@@ -20,8 +22,30 @@ const SignUp = () => {
         error,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
-    const [updateProfile, updating] = useUpdateProfile(auth);
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
+    const[token]=useToken(user || googleUser)
+
+
+
+    const navigate = useNavigate();
+
+
+    if (token) {
+        navigate('/');
+    }
+
+    if (loading || googleLoading || updating) {
+        return <Loading></Loading>
+    }
+
+    let signUpError = '';
+    if (error || googleError || updateError) {
+        signUpError = <p className='font-bold text-red-500 mb-4'><ImCross className='inline' /> Error: The email address you have entered is already registered. Please try another email to r
+        register'</p>
+    }
+
+    
     const onSubmit = async data => {
         const displayName = data.name;
         const email = data.email;
@@ -30,20 +54,6 @@ const SignUp = () => {
         await updateProfile({ displayName: displayName });
         toast.info('Profile updated successfully');
     };
-
-    const navigate = useNavigate();
-    if (user) {
-        navigate('/');
-    }
-
-    if (loading || updating) {
-        return <Loading></Loading>
-    }
-
-    let signUpError = '';
-    if (error) {
-        signUpError = <p className='font-bold text-red-500 mb-4'><ImCross className='inline' /> Error: The email address you have entered is already registered. Please try another email to register'</p>
-    }
 
     return (
         <section className='bg-base-300 pb-10'>
@@ -109,7 +119,12 @@ const SignUp = () => {
             <p className='mt-3 text-center'>Already have an account? <Link to='/signin'><span className='text-blue-400 ml-1'>Please Sign In</span> <BsArrowRight className='inline text-xl text-blue-400' /></Link></p>
 
             <div>
-                <SocialLogin></SocialLogin>
+            <div className="divider">OR</div>
+
+            <button
+                        onClick={() => signInWithGoogle()}
+                        className="btn btn-outline"
+                    ><FcGoogle className='inline  text-3xl' /> Continue With Google</button>
             </div>
         </section>
     );
