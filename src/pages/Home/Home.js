@@ -5,6 +5,8 @@ import Cart from '../Cart/Cart';
 import UseProducts from '../hooks/UseProducts';
 import OverView from '../OverView/OverView';
 import Banner from './../Banner/Banner';
+import NewProducts from './Newproducts';
+import Rateing from './Rateing';
 
 const Home = () => {
     const [product]= UseProducts();
@@ -21,6 +23,8 @@ const Home = () => {
             <Link to='/ProductsCart'><button className='btn btn-outline'>See All</button></Link>
 
             <OverView></OverView>
+            <NewProducts></NewProducts>
+            <Rateing></Rateing>
             <About></About>
         </div>
     );

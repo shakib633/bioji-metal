@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 
 const AllProducts = ({ data }) => {
     const { name, total, minimum, picture, price, _id } = data;
-    const[products, setProducts]=useState()
+    const[products, setProducts]=useState([])
     const navigate = useNavigate();
     const navigateToUpdate = (id) => {
         navigate(`/dashboard/manageProducts/${id}`);
@@ -18,10 +18,9 @@ const AllProducts = ({ data }) => {
              })
              .then(res=>res.json())
              .then(data=>{
-                const restProducts=products.filter(product=>product._id !==id)
+                const restProducts=products.filter(product=>product._id!==id)
                 setProducts(restProducts);
                 toast.info('Product Has been Remove from Inventory')
-
              })
          }
     }

@@ -22,7 +22,7 @@ const MyProfile = () => {
             linkedIn: linkedInRef.current.value
         };
 
-        fetch(`http://localhost:5000/users/${user.email}`, {
+        fetch(`http://localhost:5000/user/${user.email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -36,12 +36,12 @@ const MyProfile = () => {
     // my profile 
     const [update, setUpdate] = useState([]);
     useEffect(() => {
-        const url = `http://localhost:5000/users/${user.email}`;
+        const url = `http://localhost:5000/user/${user.email}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setUpdate(data))
     }, [update]);
-
+ console.log(user.email);
     return (
         <section className='grid lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1'>
             <div class="card w-96 bg-base-100 shadow-xl ml-1">

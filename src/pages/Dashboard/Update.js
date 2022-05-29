@@ -20,7 +20,7 @@ const Update = () => {
 
     const handleUpdate = event => {
         event.preventDefault();
-        const update = {
+        const updateData = {
             name: nameRef.current.value,
             about: aboutRef.current.value,
             minimum: minimumRef.current.value,
@@ -34,7 +34,7 @@ const Update = () => {
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(update)
+            body: JSON.stringify(updateData)
         })
             .then(res => res.json())
             .then(data => console.log(data));

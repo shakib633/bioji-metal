@@ -9,21 +9,20 @@ const AddAReview = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [user] = useAuthState(auth);
     const onSubmit = data => {
-        const review = {
+        const rating = {
             userName: user.displayName,
             userImage: data.picture,
             userReview: data.review,
             userRatings: data.ratings,
         }
-        console.log(review);
 
 
-        fetch('http://localhost:5000/review', {
+        fetch('http://localhost:5000/rating', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(review)
+            body: JSON.stringify(rating)
         })
             .then(res => res.json())
             .then(data => {

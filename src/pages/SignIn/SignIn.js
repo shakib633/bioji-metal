@@ -55,6 +55,7 @@ const SignIn = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
     if (token) {
+        console.log(token);
         navigate(from, { replace: true });
     }
 
