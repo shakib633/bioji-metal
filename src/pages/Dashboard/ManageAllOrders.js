@@ -11,7 +11,7 @@ const ManageAllOrders = () => {
     }, []);
     return (
         <section>
-            <h2>This is Manage Products page: {orders.length}</h2>
+            <h2>This is All orders page: {orders.length}</h2>
 
             <div className="overflow-x-auto">
                 <table className="table table-zebra w-full">

@@ -1,5 +1,5 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import React, { Suspense, useEffect, useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 
 const CheckoutForm = ({ order }) => {
     const stripe = useStripe();
@@ -7,13 +7,13 @@ const CheckoutForm = ({ order }) => {
     const [cardError, setCardError] = useState('');
     const [success, setSuccess] = useState('');
     const [processing, setProcessing] = useState(false);
-    const [transectionId, setTransectionId] = useState('');
+    const [transactionId, setTransactionId] = useState('');
     const [clientSecret, setClientSecret] = useState('');
 
     const { _id, productPrice, buyerName, buyerEmail } = order;
 
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch(`http://localhost:5000/create-payment-intent`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -39,7 +39,7 @@ const CheckoutForm = ({ order }) => {
 
         const card = elements.getElement(CardElement);
 
-        if (card == null) {
+        if (card === null) {
             return;
         }
 
@@ -50,7 +50,7 @@ const CheckoutForm = ({ order }) => {
 
         setCardError(error?.message || '');
         setSuccess('');
-        setProcessing(true)
+        setProcessing(true);
 
         //confirm card payment
         const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
@@ -71,13 +71,13 @@ const CheckoutForm = ({ order }) => {
         }
         else {
             setCardError('');
-            setTransectionId(paymentIntent.id);
+            setTransactionId(paymentIntent.id);
             setSuccess('Payment successfully completed')
 
             //store payment info to my backend:
             const payment = {
-                pay: _id,
-                transectionId: paymentIntent.id
+                order: _id,
+                transactionId: paymentIntent.id
             }
             fetch(`http://localhost:5000/order/${_id}`, {
                 method: 'PATCH',
@@ -97,19 +97,34 @@ const CheckoutForm = ({ order }) => {
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
-                <CardElement />
-                <button className='btn btn-success btn-sm mt-6' type="submit" disabled={!stripe || !elements || !clientSecret}>
+             <form onSubmit={handleSubmit}>
+                <CardElement
+                    options={{
+                        style: {
+                            base: {
+                                fontSize: '16px',
+                                color: '#424770',
+                                '::placeholder': {
+                                    color: '#aab7c4',
+                                },
+                            },
+                            invalid: {
+                                color: '#9e2146',
+                            },
+                        },
+                    }}
+                />
+                <button className='btn btn-success btn-sm mt-4' type="submit" disabled={!stripe}>
                     Pay
                 </button>
             </form>
             {
-                cardError && <p className='text-[red]'>{cardError}</p>
+                cardError && <p className='text-red-500'>{cardError}</p>
             }
             {
-                success && <div className='text-[green]'>
-                    <p>{success}</p>
-                    <p>TransectionID: <span className='text-blue-500 font-semibold'>{transectionId}</span> </p>
+                success && <div className='text-green-500'>
+                    <p>{success}  </p>
+                    <p>Your transaction Id: <span className="text-orange-500 font-bold">{transactionId}</span> </p>
                 </div>
             }
         </>
