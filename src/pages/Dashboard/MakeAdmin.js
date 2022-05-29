@@ -4,7 +4,7 @@ import Loading from '../Loading/Loading';
 import Users from './Users';
 
 const MakeAdmin = () => {
-    const { data, isLoading, refetch } = useQuery('allusers', () => fetch('http://localhost:5000/allUsers', {
+    const { data, isLoading, refetch } = useQuery('allusers', () => fetch('https://ancient-ravine-57330.herokuapp.com/allUsers', {
         method: 'GET',
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`

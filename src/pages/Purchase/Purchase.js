@@ -19,7 +19,7 @@ const Purchase = () => {
     const minimumQuantity = part.minimum;
 
     useEffect(() => {
-        const url =` http://localhost:5000/products/${id}`;
+        const url =` https://ancient-ravine-57330.herokuapp.com/products/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setPart(data))
@@ -36,7 +36,7 @@ const Purchase = () => {
             buyerAddress: data.address,
             productQuantity: data.quantity
         }
-        fetch('http://localhost:5000/orders', {
+        fetch('https://ancient-ravine-57330.herokuapp.com/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

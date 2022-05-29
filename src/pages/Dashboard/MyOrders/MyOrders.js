@@ -12,7 +12,7 @@ const MyOrders = () => {
     useEffect(()=>{
 
         if(user){
-            fetch(`http://localhost:5000/orders?buyerEmail=${user.email}`,{
+            fetch(`https://ancient-ravine-57330.herokuapp.com/orders?buyerEmail=${user.email}`,{
                 method: 'GET',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`

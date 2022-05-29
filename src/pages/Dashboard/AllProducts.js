@@ -12,7 +12,7 @@ const AllProducts = ({ data }) => {
     const handleDelete=(id)=>{
          const confirm=window.confirm('Are you sure you want to delete')
          if(confirm) {
-             const url=`http://localhost:5000/products/${id}`;
+             const url=`https://ancient-ravine-57330.herokuapp.com/products/${id}`;
              fetch(url,{
                  method: 'DELETE'
              })

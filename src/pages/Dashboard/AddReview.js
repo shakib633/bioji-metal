@@ -17,7 +17,7 @@ const AddAReview = () => {
         }
 
 
-        fetch('http://localhost:5000/rating', {
+        fetch('https://ancient-ravine-57330.herokuapp.com/rating', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

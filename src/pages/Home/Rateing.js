@@ -6,7 +6,7 @@ import SingleReview from './SingleRiview';
 const Rateing = () => {
     const [review, setReview] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/rating')
+        fetch('https://ancient-ravine-57330.herokuapp.com/rating')
             .then(res => res.json())
             .then(data => setReview(data))
     }, []);

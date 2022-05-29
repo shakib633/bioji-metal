@@ -27,7 +27,7 @@ const AddProduct = () => {
             price: productPrice
         };
         console.log(addProduct);
-        fetch('http://localhost:5000/products', {
+        fetch('https://ancient-ravine-57330.herokuapp.com/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -22,7 +22,7 @@ const MyProfile = () => {
             linkedIn: linkedInRef.current.value
         };
 
-        fetch(`http://localhost:5000/user/${user.email}`, {
+        fetch(`https://ancient-ravine-57330.herokuapp.com/user/${user.email}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -36,7 +36,7 @@ const MyProfile = () => {
     // my profile 
     const [update, setUpdate] = useState([]);
     useEffect(() => {
-        const url = `http://localhost:5000/user/${user.email}`;
+        const url = `https://ancient-ravine-57330.herokuapp.com/user/${user.email}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setUpdate(data))

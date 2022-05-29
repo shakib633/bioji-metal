@@ -6,7 +6,7 @@ const Update = () => {
     const { id } = useParams();
     const [part, setPart] = useState([]);
     useEffect(() => {
-        const url = `http://localhost:5000/products/${id}`;
+        const url = `https://ancient-ravine-57330.herokuapp.com/products/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setPart(data))
@@ -29,7 +29,7 @@ const Update = () => {
         };
 
 
-        fetch(`http://localhost:5000/products/${id}`, {
+        fetch(`https://ancient-ravine-57330.herokuapp.com/products/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
