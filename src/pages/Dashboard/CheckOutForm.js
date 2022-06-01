@@ -11,9 +11,8 @@ const CheckoutForm = ({ order }) => {
     const [clientSecret, setClientSecret] = useState('');
 
     const { _id, productPrice, buyerName, buyerEmail } = order;
-
     useEffect(() => {
-        fetch(`https://ancient-ravine-57330.herokuapp.com/create-payment-intent`, {
+        fetch('https://ancient-ravine-57330.herokuapp.com/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -26,7 +25,7 @@ const CheckoutForm = ({ order }) => {
                 if (data?.clientSecret) {
                     setClientSecret(data.clientSecret);
                 }
-            })
+            });
 
     }, [productPrice])
 
@@ -39,7 +38,7 @@ const CheckoutForm = ({ order }) => {
 
         const card = elements.getElement(CardElement);
 
-        if (card === null) {
+        if (card == null) {
             return;
         }
 
@@ -56,6 +55,7 @@ const CheckoutForm = ({ order }) => {
         const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
             clientSecret,
             {
+            
                 payment_method: {
                     card: card,
                     billing_details: {
@@ -66,12 +66,13 @@ const CheckoutForm = ({ order }) => {
             },
         );
         if (intentError) {
-            setCardError(intentError.message);
+            setCardError(intentError?.message);
             setProcessing(false);
         }
         else {
             setCardError('');
             setTransactionId(paymentIntent.id);
+            console.log(paymentIntent);
             setSuccess('Payment successfully completed')
 
             //store payment info to my backend:
@@ -114,7 +115,7 @@ const CheckoutForm = ({ order }) => {
                         },
                     }}
                 />
-                <button className='btn btn-success btn-sm mt-4' type="submit" disabled={!stripe}>
+                <button className='btn btn-success btn-sm mt-4' type="submit" disabled={!stripe || !elements || !clientSecret}>
                     Pay
                 </button>
             </form>

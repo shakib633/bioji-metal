@@ -24,6 +24,7 @@ const ManageAllOrders = () => {
                             <th>Email</th>
                             <th>Address</th>
                             <th>Price</th>
+                            <th>payment status</th>
                         </tr>
                     </thead>
                     <tbody>

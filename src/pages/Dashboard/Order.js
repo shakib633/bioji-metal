@@ -1,8 +1,6 @@
 import React from 'react';
 
 const Order = ({ data }) => {
-
-    console.log(data);
     return (
 
         <tr>
@@ -17,6 +15,7 @@ const Order = ({ data }) => {
             <td>{data.buyerEmail}</td>
             <td>{data.buyerAddress}</td>
             <td>{data.productPrice}</td>
+            <td>{(data.transactionId && <span className='text-success '>Paid</span> ||<span className='text-red-500'>Not paid yet</span>)}</td>
         </tr>
     );
 };

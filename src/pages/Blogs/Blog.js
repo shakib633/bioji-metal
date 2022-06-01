@@ -145,14 +145,14 @@ const Blog = () => {
       " type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
         aria-controls="collapseThree">
      
-     <span className="font-bold">What is unit test? Why should Write Unit Test</span>
+     <span className="font-bold">What are the different ways to manage a state in React Application?</span>
       </button>
       
     </h2>
     <div id="collapseThree" className="accordion-collapse collapse" aria-labeledby="headingThree"
       data-bs-parent="#accordionExample">
       <div class="accordion-body py-4 px-5">
-        <p>Unit testing allows the programmer to refactor code or upgrade system libraries at a later date, and make sure the module still works correctly (e.g., in regression testing). The procedure is to write test cases for all functions and methods so that whenever a change causes a fault, it can be quickly identified.</p>
+        <p>As far as we know, in React have four states. They are URL state, Server state, Local state, and Global state. React employs an observable object as the state, which tracks changes to the state and assists the component in responding appropriately. If we alter the state of any component, such as the following, the webpage will not re-render because React State will not be able to detect the changes.</p>
       </div>
     </div>
   </div>
