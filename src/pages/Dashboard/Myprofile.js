@@ -20,13 +20,16 @@ const MyProfile = () => {
       phone: phoneRef.current.value,
     };
 
-    fetch(`https://bioji-metal-server.vercel.app/user/${user.email}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(info),
-    })
+    fetch(
+      `https://bioji-metal-server-shakib633.vercel.app/user/${user.email}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(info),
+      }
+    )
       .then((res) => res.json())
       .then((data) => console.log(data));
   };
@@ -34,7 +37,7 @@ const MyProfile = () => {
   // my profile
   const [update, setUpdate] = useState([]);
   useEffect(() => {
-    const url = `https://bioji-metal-server.vercel.app/user/${user.email}`;
+    const url = `https://bioji-metal-server-shakib633.vercel.app/user/${user.email}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setUpdate(data));

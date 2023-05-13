@@ -24,7 +24,7 @@ const Purchase = () => {
   const minimumQuantity = part.minimum;
 
   useEffect(() => {
-    const url = ` https://bioji-metal-server.vercel.app/products/${id}`;
+    const url = ` https://bioji-metal-server-shakib633.vercel.app/products/${id}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setPart(data));
@@ -43,7 +43,7 @@ const Purchase = () => {
     };
 
     console.log(purchase);
-    fetch("https://bioji-metal-server.vercel.app/orders", {
+    fetch("https://bioji-metal-server-shakib633.vercel.app/orders", {
       method: "POST",
       headers: {
         "content-type": "application/json",

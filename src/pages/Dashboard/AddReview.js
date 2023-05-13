@@ -20,7 +20,7 @@ const AddAReview = () => {
       userRatings: data.ratings,
     };
 
-    fetch("https://bioji-metal-server.vercel.app/rating", {
+    fetch("https://bioji-metal-server-shakib633.vercel.app/rating", {
       method: "POST",
       headers: {
         "content-type": "application/json",

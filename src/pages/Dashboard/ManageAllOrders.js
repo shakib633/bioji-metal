@@ -5,7 +5,7 @@ const ManageAllOrders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    fetch("https://bioji-metal-server.vercel.app/order")
+    fetch("https://bioji-metal-server-shakib633.vercel.app/order")
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, []);

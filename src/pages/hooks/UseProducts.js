@@ -5,7 +5,7 @@ const UseProducts = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("https://bioji-metal-server.vercel.app/products/")
+    fetch("https://bioji-metal-server-shakib633.vercel.app/products/")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, [products]);

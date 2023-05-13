@@ -12,7 +12,7 @@ const AllProducts = ({ data }) => {
   const handleDelete = (id) => {
     const confirm = window.confirm("Are you sure you want to delete");
     if (confirm) {
-      const url = `https://bioji-metal-server.vercel.app/products/${id}`;
+      const url = `https://bioji-metal-server-shakib633.vercel.app/products/${id}`;
       fetch(url, {
         method: "DELETE",
       })

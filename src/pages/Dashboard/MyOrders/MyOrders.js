@@ -12,7 +12,7 @@ const MyOrders = () => {
   useEffect(() => {
     if (user) {
       fetch(
-        `https://bioji-metal-server.vercel.app/orders?buyerEmail=${user.email}`,
+        `https://bioji-metal-server-shakib633.vercel.app/orders?buyerEmail=${user.email}`,
         {
           method: "GET",
           headers: {

@@ -12,14 +12,17 @@ const CheckoutForm = ({ order }) => {
 
   const { _id, productPrice, buyerName, buyerEmail } = order;
   useEffect(() => {
-    fetch("https://bioji-metal-server.vercel.app/create-payment-intent", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify({ productPrice }),
-    })
+    fetch(
+      "https://bioji-metal-server-shakib633.vercel.app/create-payment-intent",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify({ productPrice }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data?.clientSecret) {
@@ -75,7 +78,7 @@ const CheckoutForm = ({ order }) => {
         order: _id,
         transactionId: paymentIntent.id,
       };
-      fetch(`https://bioji-metal-server.vercel.app/order/${_id}`, {
+      fetch(`https://bioji-metal-server-shakib633.vercel.app/order/${_id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",

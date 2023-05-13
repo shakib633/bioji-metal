@@ -6,7 +6,7 @@ const useAdmin = (user) => {
   useEffect(() => {
     const email = user?.email;
     if (email) {
-      fetch(`https://bioji-metal-server.vercel.app/admin/${email}`, {
+      fetch(`https://bioji-metal-server-shakib633.vercel.app/admin/${email}`, {
         method: "GET",
         headers: {
           "content-type": "application/json",

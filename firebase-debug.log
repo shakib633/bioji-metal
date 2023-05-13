@@ -1,113 +1,22 @@
-[debug] [2023-05-13T04:45:12.439Z] ----------------------------------------------------------------------
-[debug] [2023-05-13T04:45:12.440Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\dell\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js login
-[debug] [2023-05-13T04:45:12.440Z] CLI Version:   12.0.0
-[debug] [2023-05-13T04:45:12.441Z] Platform:      win32
-[debug] [2023-05-13T04:45:12.441Z] Node Version:  v16.16.0
-[debug] [2023-05-13T04:45:12.441Z] Time:          Sat May 13 2023 10:45:12 GMT+0600 (Bangladesh Standard Time)
-[debug] [2023-05-13T04:45:12.442Z] ----------------------------------------------------------------------
+[debug] [2023-05-13T05:57:06.938Z] ----------------------------------------------------------------------
+[debug] [2023-05-13T05:57:06.939Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\dell\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-05-13T05:57:06.939Z] CLI Version:   12.0.0
+[debug] [2023-05-13T05:57:06.940Z] Platform:      win32
+[debug] [2023-05-13T05:57:06.940Z] Node Version:  v16.16.0
+[debug] [2023-05-13T05:57:06.941Z] Time:          Sat May 13 2023 11:57:06 GMT+0600 (Bangladesh Standard Time)
+[debug] [2023-05-13T05:57:06.941Z] ----------------------------------------------------------------------
 [debug] 
-[info] i  Firebase optionally collects CLI and Emulator Suite usage and error reporting information to help improve our products. Data is collected in accordance with Google's privacy policy (https://policies.google.com/privacy) and is not used to identify you.
- 
-[info] 
-[info] Visit this URL on this device to log in:
-[info] https://accounts.google.com/o/oauth2/auth?client_id=563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com&scope=email%20openid%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloudplatformprojects.readonly%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffirebase%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform&response_type=code&state=740078576&redirect_uri=http%3A%2F%2Flocalhost%3A9005
-[info] 
-[info] Waiting for authentication...
-[debug] [2023-05-13T04:45:56.041Z] >>> [apiv2][query] POST https://accounts.google.com/o/oauth2/token [none]
-[debug] [2023-05-13T04:45:56.043Z] >>> [apiv2][body] POST https://accounts.google.com/o/oauth2/token [omitted]
-[debug] [2023-05-13T04:46:17.140Z] Token Fetch Error: FirebaseError: Failed to make request to https://accounts.google.com/o/oauth2/token
+[debug] [2023-05-13T05:57:06.998Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-05-13T05:57:06.999Z] > authorizing via signed-in user (shakibshuvo633@gmail.com)
+[debug] [2023-05-13T05:57:06.999Z] [iam] checking project bioji-e5127 for permissions ["cloudconfig.configs.get","cloudconfig.configs.update","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-05-13T05:57:07.001Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/bioji-e5127:testIamPermissions [none]
+[debug] [2023-05-13T05:57:07.001Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/bioji-e5127:testIamPermissions x-goog-quota-user=projects/bioji-e5127
+[debug] [2023-05-13T05:57:07.001Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/bioji-e5127:testIamPermissions {"permissions":["cloudconfig.configs.get","cloudconfig.configs.update","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-05-13T05:57:28.149Z] [iam] error while checking permissions, command may fail: FirebaseError: Failed to make request to https://cloudresourcemanager.googleapis.com/v1/projects/bioji-e5127:testIamPermissions
+[debug] [2023-05-13T05:57:28.151Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/bioji-e5127 [none]
+[debug] [2023-05-13T05:57:49.255Z] Failed to make request to https://firebase.googleapis.com/v1beta1/projects/bioji-e5127
+[debug] [2023-05-13T05:57:49.709Z] FirebaseError: Failed to make request to https://firebase.googleapis.com/v1beta1/projects/bioji-e5127
     at RetryOperation._fn (C:\Users\dell\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:242:31)
     at processTicksAndRejections (node:internal/process/task_queues:96:5)
-[debug] [2023-05-13T04:46:17.144Z] >>> [apiv2][query] POST https://auth.firebase.tools/attest [none]
-[debug] [2023-05-13T04:46:17.145Z] >>> [apiv2][body] POST https://auth.firebase.tools/attest {"session_id":"a95ef400-8218-454e-8261-fbc52d4f442e"}
-[debug] [2023-05-13T04:46:17.749Z] <<< [apiv2][status] POST https://auth.firebase.tools/attest 200
-[debug] [2023-05-13T04:46:17.749Z] <<< [apiv2][body] POST https://auth.firebase.tools/attest {"token":"zzmNcXFkYfPzmtL4YUcwDNi87AcGOtmd12nypZytoNY"}
-[info] 
-[info] To sign in to the Firebase CLI:
-[info] 
-[info] 1. Take note of your session ID:
-[info] 
-[info]    A95EF
-[info] 
-[info] 2. Visit the URL below on any device and follow the instructions to get your code:
-[info] 
-[info]    https://auth.firebase.tools/login?code_challenge=0bi1sDO-genbFbsGrOIpsdJ9grO5uzpNsJhu3msLNrk&session=a95ef400-8218-454e-8261-fbc52d4f442e&attest=zzmNcXFkYfPzmtL4YUcwDNi87AcGOtmd12nypZytoNY
-[info] 
-[info] 3. Paste or enter the authorization code below once you have it:
-[info] 
-[debug] [2023-05-13T05:12:41.182Z] ----------------------------------------------------------------------
-[debug] [2023-05-13T05:12:41.184Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\dell\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js login
-[debug] [2023-05-13T05:12:41.184Z] CLI Version:   12.0.0
-[debug] [2023-05-13T05:12:41.184Z] Platform:      win32
-[debug] [2023-05-13T05:12:41.184Z] Node Version:  v16.16.0
-[debug] [2023-05-13T05:12:41.185Z] Time:          Sat May 13 2023 11:12:41 GMT+0600 (Bangladesh Standard Time)
-[debug] [2023-05-13T05:12:41.185Z] ----------------------------------------------------------------------
-[debug] 
-[info] i  Firebase optionally collects CLI and Emulator Suite usage and error reporting information to help improve our products. Data is collected in accordance with Google's privacy policy (https://policies.google.com/privacy) and is not used to identify you.
- 
-[info] i  To change your data collection preference at any time, run `firebase logout` and log in again. 
-[info] 
-[info] Visit this URL on this device to log in:
-[info] https://accounts.google.com/o/oauth2/auth?client_id=563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com&scope=email%20openid%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloudplatformprojects.readonly%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffirebase%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform&response_type=code&state=292712537&redirect_uri=http%3A%2F%2Flocalhost%3A9005
-[info] 
-[info] Waiting for authentication...
-[debug] [2023-05-13T05:12:52.442Z] >>> [apiv2][query] POST https://accounts.google.com/o/oauth2/token [none]
-[debug] [2023-05-13T05:12:52.442Z] >>> [apiv2][body] POST https://accounts.google.com/o/oauth2/token [omitted]
-[debug] [2023-05-13T05:13:13.562Z] Token Fetch Error: FirebaseError: Failed to make request to https://accounts.google.com/o/oauth2/token
-    at RetryOperation._fn (C:\Users\dell\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:242:31)
-    at processTicksAndRejections (node:internal/process/task_queues:96:5)
-[debug] [2023-05-13T05:13:13.569Z] >>> [apiv2][query] POST https://auth.firebase.tools/attest [none]
-[debug] [2023-05-13T05:13:13.570Z] >>> [apiv2][body] POST https://auth.firebase.tools/attest {"session_id":"f06622a4-5501-48ba-b0dc-1ef78e44f836"}
-[debug] [2023-05-13T05:13:14.107Z] <<< [apiv2][status] POST https://auth.firebase.tools/attest 200
-[debug] [2023-05-13T05:13:14.107Z] <<< [apiv2][body] POST https://auth.firebase.tools/attest {"token":"72laHTyC343OlnOWPCN50Dek6Qr82n29ztulpw8J0nA"}
-[info] 
-[info] To sign in to the Firebase CLI:
-[info] 
-[info] 1. Take note of your session ID:
-[info] 
-[info]    F0662
-[info] 
-[info] 2. Visit the URL below on any device and follow the instructions to get your code:
-[info] 
-[info]    https://auth.firebase.tools/login?code_challenge=TKqnq3G9bfTvcWoTsc_Ww3eA8zyZtxGfZwPKOi2WioM&session=f06622a4-5501-48ba-b0dc-1ef78e44f836&attest=72laHTyC343OlnOWPCN50Dek6Qr82n29ztulpw8J0nA
-[info] 
-[info] 3. Paste or enter the authorization code below once you have it:
-[info] 
-[debug] [2023-05-13T05:21:55.392Z] ----------------------------------------------------------------------
-[debug] [2023-05-13T05:21:55.393Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\dell\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js login
-[debug] [2023-05-13T05:21:55.394Z] CLI Version:   12.0.0
-[debug] [2023-05-13T05:21:55.394Z] Platform:      win32
-[debug] [2023-05-13T05:21:55.394Z] Node Version:  v16.16.0
-[debug] [2023-05-13T05:21:55.395Z] Time:          Sat May 13 2023 11:21:55 GMT+0600 (Bangladesh Standard Time)
-[debug] [2023-05-13T05:21:55.395Z] ----------------------------------------------------------------------
-[debug] 
-[info] i  Firebase optionally collects CLI and Emulator Suite usage and error reporting information to help improve our products. Data is collected in accordance with Google's privacy policy (https://policies.google.com/privacy) and is not used to identify you.
- 
-[info] i  To change your data collection preference at any time, run `firebase logout` and log in again. 
-[info] 
-[info] Visit this URL on this device to log in:
-[info] https://accounts.google.com/o/oauth2/auth?client_id=563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com&scope=email%20openid%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloudplatformprojects.readonly%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffirebase%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform&response_type=code&state=651073396&redirect_uri=http%3A%2F%2Flocalhost%3A9005
-[info] 
-[info] Waiting for authentication...
-[debug] [2023-05-13T05:22:08.019Z] >>> [apiv2][query] POST https://accounts.google.com/o/oauth2/token [none]
-[debug] [2023-05-13T05:22:08.020Z] >>> [apiv2][body] POST https://accounts.google.com/o/oauth2/token [omitted]
-[debug] [2023-05-13T05:22:29.145Z] Token Fetch Error: FirebaseError: Failed to make request to https://accounts.google.com/o/oauth2/token
-    at RetryOperation._fn (C:\Users\dell\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:242:31)
-    at processTicksAndRejections (node:internal/process/task_queues:96:5)
-[debug] [2023-05-13T05:22:29.151Z] >>> [apiv2][query] POST https://auth.firebase.tools/attest [none]
-[debug] [2023-05-13T05:22:29.151Z] >>> [apiv2][body] POST https://auth.firebase.tools/attest {"session_id":"b5d48bcf-3cb6-427e-a71b-22f174df4dd7"}
-[debug] [2023-05-13T05:22:29.740Z] <<< [apiv2][status] POST https://auth.firebase.tools/attest 200
-[debug] [2023-05-13T05:22:29.740Z] <<< [apiv2][body] POST https://auth.firebase.tools/attest {"token":"CHb6ToS_reoT02n5Xpdap_u9RJpuNqoP1KZSEliRzPw"}
-[info] 
-[info] To sign in to the Firebase CLI:
-[info] 
-[info] 1. Take note of your session ID:
-[info] 
-[info]    B5D48
-[info] 
-[info] 2. Visit the URL below on any device and follow the instructions to get your code:
-[info] 
-[info]    https://auth.firebase.tools/login?code_challenge=IkzRHYknEDzNfQFwrZe7Bcp2-c8asCpZU_qklQ4tzeg&session=b5d48bcf-3cb6-427e-a71b-22f174df4dd7&attest=CHb6ToS_reoT02n5Xpdap_u9RJpuNqoP1KZSEliRzPw
-[info] 
-[info] 3. Paste or enter the authorization code below once you have it:
-[info] 
+[error] 
+[error] Error: Failed to get Firebase project bioji-e5127. Please make sure the project exists and your account has permission to access it.
