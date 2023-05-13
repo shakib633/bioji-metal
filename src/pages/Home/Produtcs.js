@@ -5,8 +5,8 @@ const Products = ({ product }) => {
     return (
         <section>
             <div className="card w-fit bg-base-100 shadow-xl mb-16 mt-16">
-                <figure><img style={{ width: '300px' }} src={picture} alt="parts" /></figure>
-                <div className="card-body">
+                <figure><img style={{ width: '200px' }} src={picture} alt="parts" /></figure>
+                <div className="card-body text-left">
                     <h2 className="card-title">
                         <span className='font-bold'>Name:</span>{name}
                     </h2>

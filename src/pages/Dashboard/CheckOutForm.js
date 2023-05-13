@@ -1,135 +1,135 @@
-import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import React, {  useEffect, useState } from 'react';
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import React, { useEffect, useState } from "react";
 
 const CheckoutForm = ({ order }) => {
-    const stripe = useStripe();
-    const elements = useElements();
-    const [cardError, setCardError] = useState('');
-    const [success, setSuccess] = useState('');
-    const [processing, setProcessing] = useState(false);
-    const [transactionId, setTransactionId] = useState('');
-    const [clientSecret, setClientSecret] = useState('');
+  const stripe = useStripe();
+  const elements = useElements();
+  const [cardError, setCardError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [processing, setProcessing] = useState(false);
+  const [transactionId, setTransactionId] = useState("");
+  const [clientSecret, setClientSecret] = useState("");
 
-    const { _id, productPrice, buyerName, buyerEmail } = order;
-    useEffect(() => {
-        fetch('https://ancient-ravine-57330.herokuapp.com/create-payment-intent', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json',
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-            },
-            body: JSON.stringify({ productPrice })
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data?.clientSecret) {
-                    setClientSecret(data.clientSecret);
-                }
-            });
-
-    }, [productPrice])
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-
-        if (!stripe || !elements) {
-            return;
+  const { _id, productPrice, buyerName, buyerEmail } = order;
+  useEffect(() => {
+    fetch("https://bioji-metal-server.vercel.app/create-payment-intent", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify({ productPrice }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.clientSecret) {
+          setClientSecret(data.clientSecret);
         }
+      });
+  }, [productPrice]);
 
-        const card = elements.getElement(CardElement);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-        if (card == null) {
-            return;
-        }
-
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
-            type: 'card',
-            card
-        });
-
-        setCardError(error?.message || '');
-        setSuccess('');
-        setProcessing(true);
-
-        //confirm card payment
-        const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
-            clientSecret,
-            {
-            
-                payment_method: {
-                    card: card,
-                    billing_details: {
-                        name: buyerName,
-                        email: buyerEmail
-                    },
-                },
-            },
-        );
-        if (intentError) {
-            setCardError(intentError?.message);
-            setProcessing(false);
-        }
-        else {
-            setCardError('');
-            setTransactionId(paymentIntent.id);
-            console.log(paymentIntent);
-            setSuccess('Payment successfully completed')
-
-            //store payment info to my backend:
-            const payment = {
-                order: _id,
-                transactionId: paymentIntent.id
-            }
-            fetch(`https://ancient-ravine-57330.herokuapp.com/order/${_id}`, {
-                method: 'PATCH',
-                headers: {
-                    'content-type': 'application/json',
-                    'authorization':` Bearer ${localStorage.getItem('accessToken')}`
-                },
-                body: JSON.stringify(payment)
-            })
-                .then(res => res.json())
-                .then(data => {
-                    setProcessing(false);
-                    console.log(data);
-                })
-        }
+    if (!stripe || !elements) {
+      return;
     }
 
-    return (
-        <>
-             <form onSubmit={handleSubmit}>
-                <CardElement
-                    options={{
-                        style: {
-                            base: {
-                                fontSize: '16px',
-                                color: '#424770',
-                                '::placeholder': {
-                                    color: '#aab7c4',
-                                },
-                            },
-                            invalid: {
-                                color: '#9e2146',
-                            },
-                        },
-                    }}
-                />
-                <button className='btn btn-success btn-sm mt-4' type="submit" disabled={!stripe || !elements || !clientSecret}>
-                    Pay
-                </button>
-            </form>
-            {
-                cardError && <p className='text-red-500'>{cardError}</p>
-            }
-            {
-                success && <div className='text-green-500'>
-                    <p>{success}  </p>
-                    <p>Your transaction Id: <span className="text-orange-500 font-bold">{transactionId}</span> </p>
-                </div>
-            }
-        </>
-    );
+    const card = elements.getElement(CardElement);
+
+    if (card == null) {
+      return;
+    }
+
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: "card",
+      card,
+    });
+
+    setCardError(error?.message || "");
+    setSuccess("");
+    setProcessing(true);
+
+    //confirm card payment
+    const { paymentIntent, error: intentError } =
+      await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: card,
+          billing_details: {
+            name: buyerName,
+            email: buyerEmail,
+          },
+        },
+      });
+    if (intentError) {
+      setCardError(intentError?.message);
+      setProcessing(false);
+    } else {
+      setCardError("");
+      setTransactionId(paymentIntent.id);
+      console.log(paymentIntent);
+      setSuccess("Payment successfully completed");
+
+      //store payment info to my backend:
+      const payment = {
+        order: _id,
+        transactionId: paymentIntent.id,
+      };
+      fetch(`https://bioji-metal-server.vercel.app/order/${_id}`, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+          authorization: ` Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(payment),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setProcessing(false);
+          console.log(data);
+        });
+    }
+  };
+
+  return (
+    <>
+      <form onSubmit={handleSubmit}>
+        <CardElement
+          options={{
+            style: {
+              base: {
+                fontSize: "16px",
+                color: "#424770",
+                "::placeholder": {
+                  color: "#aab7c4",
+                },
+              },
+              invalid: {
+                color: "#9e2146",
+              },
+            },
+          }}
+        />
+        <button
+          className="btn btn-success btn-sm mt-4"
+          type="submit"
+          disabled={!stripe || !elements || !clientSecret}
+        >
+          Pay
+        </button>
+      </form>
+      {cardError && <p className="text-red-500">{cardError}</p>}
+      {success && (
+        <div className="text-green-500">
+          <p>{success} </p>
+          <p>
+            Your transaction Id:{" "}
+            <span className="text-orange-500 font-bold">{transactionId}</span>{" "}
+          </p>
+        </div>
+      )}
+    </>
+  );
 };
 
 export default CheckoutForm;

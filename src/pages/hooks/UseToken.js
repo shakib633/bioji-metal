@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
 const useToken = (user) => {
-  const [token, setToken] = useState("")
+  const [token, setToken] = useState("");
 
   useEffect(() => {
     const email = user?.user?.email;
     const currentUser = { email: email };
     if (email) {
-      const url = `https://ancient-ravine-57330.herokuapp.com/user/${email}`;
+      const url = `https://bioji-metal-server.vercel.app/user/${email}`;
       fetch(url, {
         method: "PUT",
         headers: {
