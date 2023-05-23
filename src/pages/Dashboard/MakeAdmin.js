@@ -5,7 +5,7 @@ import Users from "./Users";
 
 const MakeAdmin = () => {
   const { data, isLoading, refetch } = useQuery("allusers", () =>
-    fetch("https://bioji-metal-server-shakib633.vercel.app/allUsers", {
+    fetch("http://localhost:5000/allUsers", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

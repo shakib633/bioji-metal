@@ -11,15 +11,12 @@ const MyOrders = () => {
 
   useEffect(() => {
     if (user) {
-      fetch(
-        `https://bioji-metal-server-shakib633.vercel.app/orders?buyerEmail=${user.email}`,
-        {
-          method: "GET",
-          headers: {
-            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        }
-      )
+      fetch(`http://localhost:5000/orders?buyerEmail=${user.email}`, {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
         .then((res) => {
           if (res.status === 401 || res.status === 403) {
             signOut(auth);

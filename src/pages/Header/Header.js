@@ -6,6 +6,14 @@ import auth from "../../firebase.init";
 
 const Header = () => {
   const [user] = useAuthState(auth);
+
+  let photoURL = "";
+  if (user?.photoURL) {
+    photoURL = user.photoURL;
+  } else {
+    photoURL = "https://i.ibb.co/tLHn9XP/user-default-image.png";
+  }
+
   const handleSignOut = () => {
     signOut(auth);
     localStorage.removeItem("accessToken");
@@ -33,7 +41,7 @@ const Header = () => {
             {user ? (
               <img
                 className="h-8 w-8 mx-auto bg-light-100 rounded-full"
-                src={user?.photoURL || user.displayName}
+                src={photoURL}
                 alt=""
               />
             ) : (

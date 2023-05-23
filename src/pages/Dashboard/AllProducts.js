@@ -12,7 +12,7 @@ const AllProducts = ({ data }) => {
   const handleDelete = (id) => {
     const confirm = window.confirm("Are you sure you want to delete");
     if (confirm) {
-      const url = `https://bioji-metal-server-shakib633.vercel.app/products/${id}`;
+      const url = `http://localhost:5000/products/${id}`;
       fetch(url, {
         method: "DELETE",
       })
@@ -37,7 +37,7 @@ const AllProducts = ({ data }) => {
       <td>{name}</td>
       <td>{total}</td>
       <td>{minimum}</td>
-      <td>{price}</td>
+      <td>{price}$</td>
       <td>
         <button className="btn btn-outline" onClick={() => handleDelete(_id)}>
           Delete

@@ -5,10 +5,10 @@ const ManageAllOrders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    fetch("https://bioji-metal-server-shakib633.vercel.app/order")
+    fetch("http://localhost:5000/order")
       .then((res) => res.json())
       .then((data) => setOrders(data));
-  }, []);
+  }, [orders]);
   return (
     <section>
       <h2>This is All orders page: {orders.length}</h2>
@@ -18,7 +18,6 @@ const ManageAllOrders = () => {
           <thead>
             <tr>
               <th></th>
-              <th>Image</th>
               <th>Buyer Name</th>
               <th>Product Name</th>
               <th>Email</th>

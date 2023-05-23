@@ -6,7 +6,7 @@ const Update = () => {
   const { id } = useParams();
   const [part, setPart] = useState([]);
   useEffect(() => {
-    const url = `https://bioji-metal-server-shakib633.vercel.app/products/${id}`;
+    const url = `http://localhost:5000/products/${id}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setPart(data));
@@ -28,7 +28,7 @@ const Update = () => {
       price: priceRef.current.value,
     };
 
-    fetch(`https://bioji-metal-server-shakib633.vercel.app/products/${id}`, {
+    fetch(`http://localhost:5000/products/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

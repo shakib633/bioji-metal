@@ -27,7 +27,7 @@ const AddProduct = () => {
       price: productPrice,
     };
     console.log(addProduct);
-    fetch("https://bioji-metal-server-shakib633.vercel.app/products", {
+    fetch("http://localhost:5000/products", {
       method: "POST",
       headers: {
         "content-type": "application/json",

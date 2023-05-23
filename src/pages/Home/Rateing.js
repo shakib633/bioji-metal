@@ -5,7 +5,7 @@ import SingleReview from "./SingleRiview";
 const Rateing = () => {
   const [review, setReview] = useState([]);
   useEffect(() => {
-    fetch("https://bioji-metal-server-shakib633.vercel.app/rating")
+    fetch("http://localhost:5000/rating")
       .then((res) => res.json())
       .then((data) => setReview(data));
   }, []);
